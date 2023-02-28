@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-kinesis": "^2.0.5"
+  }
+}

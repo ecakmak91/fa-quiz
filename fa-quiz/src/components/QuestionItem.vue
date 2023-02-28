@@ -1,26 +1,36 @@
 <template>
-  <li :class="index==0?'active':''">
-    <h3>Question {{ index+1 }} of {{ length }} </h3>
+
+  <Transition name="fade">
+  <div class="question">
+    <h3>Question {{ index+1 }} of {{ totalLength }} </h3>
     <div class="question-text">{{question.question}}</div>
     <div class="options">
-      <a v-for="(option, i) in question.options" :key="i" @click="clickOpt(index,i)" :class="selectedOpt===i ? 'selectedOpt':''">
+      <a v-for="(option, i) in question.options" :key="i" @click="clickOpt(index,i)" :class="question.userAnswer===i ? 'selectedOpt':''">
         {{ option }}
+        <span v-if="isQuizFinish && question.correctAnswer===i"></span>
       </a>
     </div>
-  </li>
+  </div>
+</Transition>
 </template>
 <script setup>
-  import { ref } from "vue";
+  import { ref,watch } from "vue";
   import useQuestionJobs from "../composables/questionJobs.js"
-  defineProps({
+  const props=defineProps({
     question:Object,
     index:Number,
-    length:Number
+    totalLength:Number,
+    isQuizFinish:Boolean
   })
   const emit = defineEmits(['nextPage'])
 
   const {setAnswer} = useQuestionJobs()
   const selectedOpt=ref(null)
+
+
+  watch(props, () => {
+    selectedOpt.value=null
+  });
 
   const clickOpt = (index,userOption)=>{
     selectedOpt.value=userOption
@@ -32,13 +42,13 @@
 </script>
 <style lang="scss" scoped>
 @import '@/assets/base.scss';
-li{
+.question{
   list-style: none;
-  position: absolute;
+  position: relative;
   border-radius: 1em;
   background: #fff;
   overflow: hidden;
-  box-shadow: 0px 0px 8px -5px #ccc;
+  box-shadow: 0px 0px 18px -5px #ccc;
   width: 100%;
   height: 50vh;
   display: flex;
@@ -47,6 +57,7 @@ li{
   align-items: center;
   &.active{
     z-index: 2;
+    top:0;
   }
   h3{
     background: $ft-pink;
@@ -75,8 +86,6 @@ li{
     font-size: 1.2em;
   }
   .options{
-    display: flex;
-    justify-content: space-between;
     height: 50%;
     display: flex;
     justify-content: center;
@@ -95,6 +104,7 @@ li{
       transition: .3s;
       text-align: center;
       cursor: pointer;
+      position: relative;
       &:hover{
         color: #fff;
         background: $ft-blue;
@@ -103,7 +113,22 @@ li{
         background: $ft-purple;
         color: #fff;
       }
+      span{
+        border: 5px solid #24c200;
+        width: 100%;
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        border-radius: 3em;
+        box-sizing: border-box;
+      }
     }
   }
 }
+
+
+
 </style>
