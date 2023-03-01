@@ -14,10 +14,12 @@
 <style lang="scss" scoped>
   video.hero__video__video {
     position: fixed;
-    width: 100%;
+    width: 100vw;
     left: 0;
     top: 0;
     z-index: -1;
+    height: 100vh;
+    object-fit: cover;
   }
   .custom-btn {
     width: 130px;
@@ -107,4 +109,8 @@
     -moz-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
   }
+
+  
+
+  
 </style>

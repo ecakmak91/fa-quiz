@@ -13,10 +13,10 @@
       </Transition>
     </div>
   </div>
-  <div class="optical-form">
+  <div class="optical-form" :class="{active:openOpticalForm}">
     <a @click="finishQuizButton" v-if="isFinishButtonOpen" class="finish-quiz animate__animated animate__bounce">Finish</a>
     <div class="item" v-for="(item, index) in questionList" :key="index">
-      <span class="question-number" @click="selectedPages=index"> {{index+1}} </span>
+      <span class="question-number" @click="changePage(index)"> {{index+1}} </span>
       <div class="options">
         <a v-for="(option, i) in item.options" :key="i" :class="item.userAnswer==i ? 'selected':''">
           <span v-if="isQuizFinish && item.correctAnswer===i"></span>
@@ -24,6 +24,11 @@
       </div>
     </div>
   </div>
+  <a @click="toggleOpticalForm" class="burger-optical-form" :class="{active:openOpticalForm}">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
 
   <div class="popup" v-if="isPopupOpen">
     <div class="overlay">
@@ -118,6 +123,8 @@
 
   const isQuizFinish=ref(false)
   const isPopupOpen=ref(false)
+  const openOpticalForm=ref(false)
+
   const quizResult=ref({
     title:"",
     description:"",
@@ -170,6 +177,14 @@
     isPopupOpen.value=false;
   }
 
+  const toggleOpticalForm=()=>{
+    openOpticalForm.value=!openOpticalForm.value
+  }
+  const changePage=(index)=>{
+    selectedPages.value=index
+    openOpticalForm.value=false
+  }
+
   
   //const deneme=question.deneme.value
 
@@ -189,6 +204,8 @@
     left: 50%;
     justify-content: center;
     margin-left: -25vw;
+    background: #fff;
+    z-index: 2;
     .finish-quiz{
       position: absolute;
       top: -40px;
@@ -440,5 +457,77 @@
       }
     }
   }
-  
+  .about {
+    position: relative;
+    z-index: 9;
+  }
+  .burger-optical-form{
+    /*display: none;*/
+    position: fixed;
+    z-index: 99999;
+    width: 40px;
+    height: 40px;
+    right: 1em;
+    bottom: 1em;
+    span{
+      background-color: $ft-orange;
+      display: block;
+      width: 80%;
+      height: 5px;
+      transition: .3s;
+      &:nth-child(1){}
+      &:nth-child(2){
+        margin: .5em 0;
+      }
+      &:nth-child(3){}
+    }
+    &.active{
+      span{
+        &:nth-child(1){
+          transform: rotate(45deg);
+          margin: 15px 0 -26px 0;
+        }
+        &:nth-child(2){
+          opacity: 0;
+        }
+        &:nth-child(3){
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 650px) {
+    .question-list[data-v-85b27e8c] {
+      padding-top: 0em;
+    }
+    .optical-form {
+      width: 100vw;
+      left: 0;
+      margin-left: 0;
+      background: #fff;
+      z-index: 999;
+      height: 100%;
+      flex-direction: column;
+      transition: .3s;
+      top: 100%;
+      &.active{
+        top: 0;
+      }
+      .item{
+        display: flex;
+        justify-content: center;
+        border: none;
+        margin-bottom: 1em;
+        .options{
+          display: flex;
+          align-items: center;
+          background-color: #f5f5f5;
+          a{
+            margin: 0 1em;
+          }
+        }
+      }
+    }
+  }
 </style>
