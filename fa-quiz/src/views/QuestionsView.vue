@@ -46,61 +46,61 @@
   </div>
   <kinesis-container class="bg-parallax">
     <kinesis-element class="bg-image bg-image1" :strength="2">
-      <img src="@/assets/bg/1.png" />
+      <img src="@/assets/bg/1.png" alt="bg part 1"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image2" :strength="4">
-      <img src="@/assets/bg/2.png" />
+      <img src="@/assets/bg/2.png" alt="bg part 2"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image3" :strength="6">
-      <img src="@/assets/bg/3.png" />
+      <img src="@/assets/bg/3.png" alt="bg part 3"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image4" :strength="8">
-      <img src="@/assets/bg/4.png" />
+      <img src="@/assets/bg/4.png" alt="bg part 4"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image5" :strength="10">
-      <img src="@/assets/bg/5.png" />
+      <img src="@/assets/bg/5.png" alt="bg part 5"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image6" :strength="3">
-      <img src="@/assets/bg/6.png" />
+      <img src="@/assets/bg/6.png" alt="bg part 6"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image7" :strength="5">
-      <img src="@/assets/bg/7.png" />
+      <img src="@/assets/bg/7.png" alt="bg part 7"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image8" :strength="7">
-      <img src="@/assets/bg/8.png" />
+      <img src="@/assets/bg/8.png" alt="bg part 8"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image9" :strength="9">
-      <img src="@/assets/bg/9.png" />
+      <img src="@/assets/bg/9.png" alt="bg part 9"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image10" :strength="11">
-      <img src="@/assets/bg/10.png" />
+      <img src="@/assets/bg/10.png" alt="bg part 10"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image11" :strength="13">
-      <img src="@/assets/bg/11.png" />
+      <img src="@/assets/bg/11.png" alt="bg part 11"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image12" :strength="15">
-      <img src="@/assets/bg/12.png" />
+      <img src="@/assets/bg/12.png" alt="bg part 12"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image15" :strength="17">
-      <img src="@/assets/bg/15.png" />
+      <img src="@/assets/bg/15.png" alt="bg part 15"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image16" :strength="19">
-      <img src="@/assets/bg/16.png" />
+      <img src="@/assets/bg/16.png" alt="bg part 16"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image17" :strength="22">
-      <img src="@/assets/bg/17.png" />
+      <img src="@/assets/bg/17.png" alt="bg part 17"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image18" :strength="24">
-      <img src="@/assets/bg/18.png" />
+      <img src="@/assets/bg/18.png" alt="bg part 18"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image19" :strength="12">
-      <img src="@/assets/bg/19.png" />
+      <img src="@/assets/bg/19.png" alt="bg part 19"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image20" :strength="13" axis="x">
-      <img src="@/assets/bg/20.png" />
+      <img src="@/assets/bg/20.png" alt="bg part 20"/>
     </kinesis-element>
     <kinesis-element class="bg-image bg-image21" :strength="20" axis="x">
-      <img src="@/assets/bg/21.png" />
+      <img src="@/assets/bg/21.png" alt="bg part 21"/>
     </kinesis-element>
   </kinesis-container>
 
@@ -476,11 +476,9 @@
       width: 80%;
       height: 5px;
       transition: .3s;
-      &:nth-child(1){}
       &:nth-child(2){
         margin: .5em 0;
       }
-      &:nth-child(3){}
     }
     &.active{
       span{
