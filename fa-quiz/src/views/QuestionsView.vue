@@ -278,6 +278,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    z-index: 9;
     .overlay{
       width: 80%;
       max-width: 500px;

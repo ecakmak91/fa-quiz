@@ -33,9 +33,13 @@
   });
 
   const clickOpt = (index,userOption)=>{
-    selectedOpt.value=userOption
-    setAnswer(index,userOption)
-    emit("nextPage",index+1);
+    
+    if(!props.isQuizFinish){
+      selectedOpt.value=userOption
+      setAnswer(index,userOption)
+      emit("nextPage",index+1);
+    }
+    
   }
 
 

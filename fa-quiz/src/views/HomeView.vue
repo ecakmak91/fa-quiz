@@ -50,7 +50,7 @@
     line-height: 42px;
     -webkit-perspective: 230px;
     perspective: 230px;
-    margin-left: -65px;
+    margin-left: -90px;
   }
   .btn-12 span {
     background: rgb(0,172,238);
